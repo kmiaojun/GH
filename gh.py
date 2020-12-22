@@ -3,8 +3,8 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 from PIL import Image, ImageEnhance
-from chaojiying import Chaojiying_Client
-import FileUtils
+from tool.chaojiying import Chaojiying_Client
+from tool import FileUtils
 import subprocess
 import traceback
 import os, shutil
@@ -28,9 +28,13 @@ wait_time = int(cf.get("sys", "global_wait_time_weight"))
 web_wait_time = int(cf.get("sys", "web_driver_wait_time_weight"))
 if not os.path.exists(root_dir):
     os.mkdir(root_dir)
-os.system(os.path.realpath(sys.argv[0]).replace(os.path.realpath(sys.argv[0]).split('\\')[-1], 'shutd.bat'))
+os.system(os.path.realpath(sys.argv[0]).replace(os.path.realpath(sys.argv[0]).split('\\')[-1], 'script\\shutd.bat'))
 cfed = configparser.ConfigParser()
 cfed.read("./conf/ed.conf", encoding='utf-8-sig')
+if cf.get("sys", "ed_state") == '1':
+    ed_name = get_ed_name()
+else:
+    ed_name = "normal"
 
 
 def spider_gh():
@@ -48,10 +52,6 @@ def spider_gh():
     # shenqingh = 2019300339762
     # 2019105148830
     # 2018214893335
-    if cf.get("sys", "ed_state") == '1':
-        ed_name = get_ed_name()
-    else:
-        ed_name = "normal"
 
     print(cfed.get(ed_name, "prt_sqh"))
     shenqingh = input()
@@ -310,7 +310,7 @@ def spider_gh():
         driver.quit()
         # 关闭firefox进程
         # print('正在关闭firefox进程...')
-        os.system(os.path.realpath(sys.argv[0]).replace(os.path.realpath(sys.argv[0]).split('\\')[-1], 'shutd.bat'))
+        os.system(os.path.realpath(sys.argv[0]).replace(os.path.realpath(sys.argv[0]).split('\\')[-1], 'script\\shutd.bat'))
         # print('关闭完成')
 
         print(cfed.get(ed_name, "prt_rwwc"))

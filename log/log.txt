@@ -7,3 +7,10 @@
 selenium.common.exceptions.TimeoutException: Message: 
 
 
+2020-12-22 14:31:09,107 - gh.py[line:321] - ERROR: Traceback (most recent call last):
+  File "C:/Users/drx/Desktop/GH/GH/gh.py", line 308, in spider_gh
+    dwn_img(inventName)
+  File "C:/Users/drx/Desktop/GH/GH/gh.py", line 362, in dwn_img
+    print('\r' + cfed.get(ed_name, "prt_xztp") + '(0%)', end='')
+NameError: name 'ed_name' is not defined
+

@@ -117,7 +117,7 @@ def nginx_proxy(enable_freeze:bool):
             		}\n\
             	}')
         subprocess.run('%s: && cd %s && nginx.exe -s reload' % (nginx_home.split(":")[0], nginx_home), shell=True)
-        print("enable, nginx -s reload")
+        # print("enable, nginx -s reload")
     else:
         file_override(nginx_proxy_conf, 'server {\n\
                                 		listen 80;\n\
@@ -135,7 +135,7 @@ def nginx_proxy(enable_freeze:bool):
                                 	}')
         subprocess.run('%s: && cd %s && nginx.exe -s reload' % (nginx_home.split(":")[0], nginx_home),
                        shell=True)
-        print("disable, nginx -s reload")
+        # print("disable, nginx -s reload")
 
 
 

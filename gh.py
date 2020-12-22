@@ -23,7 +23,8 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 cf = configparser.ConfigParser()
 cf.read("./conf/sys.conf", encoding='utf-8-sig')
-root_dir = cf.get("sys", "dwn_root_dir")
+# root_dir = cf.get("sys", "dwn_root_dir")
+root_dir = os.path.join(os.path.expanduser("~"), 'Desktop') + '\\dwn\\'
 wait_time = int(cf.get("sys", "global_wait_time_weight"))
 web_wait_time = int(cf.get("sys", "web_driver_wait_time_weight"))
 if not os.path.exists(root_dir):
